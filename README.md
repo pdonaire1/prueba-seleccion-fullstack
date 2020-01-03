@@ -80,9 +80,9 @@ Podras usar cualquiera de las siguientes herramientas exceptuando lo tachado.
 
 
 ## Para comenzar
-Deberas solicitar acceso al proyecto mediente el siguiente [enlace](https://gitlab.com/olaferlandsen/prueba-seleccion/project_members/request_access), una vez solicitado el acceso, se te concederan **24h** para realizar un fork y enviar un pull-request con las soluciones a los problemas planteados.
+Deberas solicitar acceso al proyecto mediente el siguiente [enlace](https://gitlab.com/tactech/prueba-seleccion-fullstack/project_members/request_access), una vez solicitado el acceso, se te concederan **24h** para realizar un fork y enviar un pull-request con las soluciones a los problemas planteados.
 ```sh
-git clone https://gitlab.com/olaferlandsen/prueba-seleccion.git
+git clone https://gitlab.com/tactech/prueba-seleccion-fullstack.git
 ```
 
 ## Desafío
