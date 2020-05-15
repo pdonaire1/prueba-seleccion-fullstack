@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Provider } from 'mobx-react';
+import { Store } from './characters/store'
+import { Characters } from './characters/Characters';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component<{}> {
+  private store: Store = new Store()
+  render(){
+    return (
+      <Provider store={this.store}>
+        <div className="App">
+          <h1>Game of Thrones</h1>
+          <div className="wrapper">
+            <div className="column">
+              <Characters />
+            </div>
+            <div className="column">
+              {/* <Character /> */}
+            </div>
+          </div>
+        </div>
+      </Provider>
+    );
+  }
 }
+
 
 export default App;
