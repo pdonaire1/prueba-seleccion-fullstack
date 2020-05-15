@@ -22,6 +22,8 @@ h1 {
 .column {
   flex-grow: 1;
   width: 50%;
+  display: inline;
+  padding: 10px;
 }
 
 .sub-title {
