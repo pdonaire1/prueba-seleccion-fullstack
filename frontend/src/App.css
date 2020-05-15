@@ -12,7 +12,7 @@
 }
 
 h1 {
-  color: #a5b9db;
+  color: #42547c;
 }
 
 .wrapper {
@@ -28,10 +28,12 @@ h1 {
   display: inline;
   font-weight: bold;
   color: #71819b;
+  margin: auto;
+  padding: 10px;
 }
 
 button {
-  background: #7e98d3;
+  background: #42547c;
   color: white;
   border-radius: 7px;
   font-weight: bold;
@@ -56,6 +58,7 @@ button.disabled {
   transition: 0.3s;
   width: 80%;
   background: #eff5ff;
+  padding-bottom: 10px;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -71,4 +74,9 @@ button.disabled {
 img {
   width: 100px;
   border-radius: 100px;
+}
+
+li {
+  list-style-type: none;
+  background: #dde2ec63;
 }

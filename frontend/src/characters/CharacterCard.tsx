@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ICharacter } from './store';
-
+const person = 'https://pointchurch.com/wp-content/uploads/2019/02/Blank-Person-Image.png';
 interface CharacterCardProps {
   character: ICharacter
   showDetails?: any
@@ -21,8 +21,10 @@ export class CharacterCard extends React.Component<CharacterCardProps> {
       <div className="card-box">
         <div className="card">
           <div className="container">
-            <div >{ character.image && <img src={character.image} /> }</div>
-            <div className="column sub-title">{character.name}</div>
+            <div className="wrapper">
+              <div className="column"><img src={character.image ? character.image : person } /></div>
+              <div className="column sub-title">{character.name}</div>
+            </div>
             { !this.props.showDetails &&
               <div>
                 <div className="wrapper">
