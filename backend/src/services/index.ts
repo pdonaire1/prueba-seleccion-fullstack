@@ -5,31 +5,27 @@ import _ from "lodash";
 class CharactersServices {
   url: string = "https://api.got.show/api/book/characters";
 
-  get(id: string){
-    return CharacterModel.findOne({id});
+  async get(id: string){
+    return await CharacterModel.findById(id);
   }
   async getList({ limit=10, page=0 }){
     try {
       let result;
-      const counts = await CharacterModel.countDocuments({})// .then(data=> console.log("data:", data));
-      if (counts === 0){ // At first time. Get initial data and save it in db
-        result = await axios.get(this.url)
+      const counts = await CharacterModel.countDocuments({})
+      if (counts === 0){
+        // The first time user request the characters, We'll save the data in db
+        const characters = await axios.get(this.url)
           .then(response => response.data);
-        await CharacterModel.insertMany(_.map(result, (data) => ({
+        await CharacterModel.insertMany(_.map(characters, (data) => ({
           name: data.name,
           gender: data.gender,
           culture: data.culture,
           image: data.image,
           allegiance: data.allegiance,
         })));
-        result = {
-          docs: result.slice((page - 1) * limit, page * limit),
-          total: result.length,
-          offset: page * limit
-        }
-      } else { // return paginated query
-        result = await CharacterModel.paginate({}, { limit, offset: page * limit });
       }
+      // return paginated query
+      result = await CharacterModel.paginate({}, { limit, offset: page * limit });
       return result;
     } catch (error) {
       throw error
