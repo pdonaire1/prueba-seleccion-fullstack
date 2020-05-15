@@ -35,9 +35,11 @@ export class CharacterCard extends React.Component<CharacterCardProps> {
                 </div>
                 <div className="wrapper">
                   <div className="column sub-title">Allegiance:</div>
-                  { !character.allegiance.length ? '-' :
-                    <ul className="column">
-                      {character.allegiance.map((value, i) => <li key={i}>{value}</li>)}</ul>}
+                  <div className="column">
+                    { !character.allegiance.length ? '-' :
+                      <ul>
+                        {character.allegiance.map((value, i) => <li key={i}>{value}</li>)}</ul>}
+                  </div>
                 </div>
               </div>}
           </div>
