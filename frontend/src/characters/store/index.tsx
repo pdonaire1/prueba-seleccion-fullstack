@@ -24,7 +24,7 @@ export class Store {
   @observable loading: boolean = false;
   @observable page: number = 0;
   @observable limit: number = 10;
-  @observable pages: number = 0;
+  @observable total: number = 0;
   
   constructor(){
     this.characters = observable([]);
@@ -36,6 +36,7 @@ export class Store {
     this.loading = true;
     try {
       const { result } = await client.requestCharacters({page: this.page, limit: this.limit});
+      this.total = result.total;
       this.characters = result.docs.map( (data: any) => {
         return {
           id: data._id,
