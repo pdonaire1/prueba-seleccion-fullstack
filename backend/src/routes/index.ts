@@ -7,7 +7,11 @@ router.get('/', (req, res) => {
 });
 router.get('/characters', async (req, res) => {
   try {
-    const result = await CharactersServices.getList();
+    const query = {
+      limit: Number(req.query.limit) || 0,
+      page: Number(req.query.page) || 0
+    }
+    const result = await CharactersServices.getList(query);
     res.status(200).send({ result });
   } catch (error) {
     res.status(400).send({ error })
