@@ -2,6 +2,8 @@ import React from 'react';
 import { Provider } from 'mobx-react';
 import { Store } from './characters/store'
 import { Characters } from './characters/Characters';
+import { Character } from './characters/Character';
+
 import './App.css';
 
 class App extends React.Component<{}> {
@@ -16,7 +18,7 @@ class App extends React.Component<{}> {
               <Characters />
             </div>
             <div className="column">
-              {/* <Character /> */}
+              <Character />
             </div>
           </div>
         </div>

@@ -14,14 +14,17 @@ export interface ICharacter {
   createdAt: string,
   updatedAt: string
 }
+const initialCharacter = { id: "", name: "", allegiance: [], createdAt: "", updatedAt: ""};
 
 export class Store {
-  @observable characters: ICharacter[] = []
-  @observable error: boolean = false
-  @observable loading: boolean = false
-  @observable page: number = 0
-  @observable limit: number = 10
-  @observable pages: number = 0
+  @observable characters: ICharacter[] = [];
+  @observable characterSelectedId: string = "";
+  @observable characterSelected: ICharacter = initialCharacter;
+  @observable error: boolean = false;
+  @observable loading: boolean = false;
+  @observable page: number = 0;
+  @observable limit: number = 10;
+  @observable pages: number = 0;
   
   constructor(){
     this.characters = observable([]);
@@ -33,10 +36,9 @@ export class Store {
     this.loading = true;
     try {
       const { result } = await client.requestCharacters({page: this.page, limit: this.limit});
-      console.log("response:", result)
       this.characters = result.docs.map( (data: any) => {
         return {
-          id: data.id,
+          id: data._id,
           name: data.name,
           gender: data.gender,
           culture: data.culture,
@@ -57,6 +59,37 @@ export class Store {
   changePage = (page:number) => {
     this.page = page;
     this.requestCharacters();
+  }
+
+  @action
+  selectCharacter = (id:string) => {
+    this.characterSelectedId = id;
+    this.requestCharacterSelected();
+  }
+
+  @action
+  requestCharacterSelected = async () => {
+    this.error = false;
+    this.loading = true;
+    try {
+      const { result } = await client.requestCharacter(this.characterSelectedId);
+      this.characterSelected = {
+        id: result._id,
+        name: result.name,
+        gender: result.gender,
+        culture: result.culture,
+        alive: result.alive,
+        image: result.image,
+        allegiance: result.allegiance,
+        createdAt: result.createdAt,
+        updatedAt: result.updatedAt
+      };
+
+    } catch (error) {
+      this.error = true;
+      this.characterSelected = initialCharacter;
+    }
+    this.loading = false
   }
 }
 

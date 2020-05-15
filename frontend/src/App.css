@@ -67,3 +67,8 @@ button.disabled {
 .card > .container {
   padding: 10px;
 }
+
+img {
+  width: 100px;
+  border-radius: 100px;
+}
