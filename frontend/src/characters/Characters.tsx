@@ -18,7 +18,6 @@ export class Characters extends React.Component<CharactersProps> {
 
   render() {
     const { characters, error, loading } = this.props.store!;
-    console.log("result:::::::", characters)
     return (
       <div>
         {/* <h1>Characters</h1> */}
