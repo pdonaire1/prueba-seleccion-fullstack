@@ -20,7 +20,7 @@
     "@types/lodash": "^4.14.150",
     "@types/mongoose": "^5.7.19",
     "@types/mongoose-paginate": "^5.0.8",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
